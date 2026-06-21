@@ -138,7 +138,7 @@
   body.light::before{opacity:.30}
   body.light h1{-webkit-text-fill-color:#0e1018}
   .hdrBtns{margin-left:auto;display:flex;gap:8px;align-items:center}
-  .hbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);flex:0 0 auto}
+  .hbtn{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:22px;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);flex:0 0 auto}
   body.listview .grid{grid-template-columns:1fr;gap:11px}
   body.listview .station{aspect-ratio:16/6}
   body.listview .station .nm{font-size:17px}
@@ -166,6 +166,18 @@
   .setAbout{text-align:center;color:var(--muted);font-size:12px;margin-top:22px;line-height:1.7}
   .hint{font-size:11.5px;color:var(--muted);text-align:center;margin:26px 0 4px;line-height:1.6;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
   footer{height:30px}
+.adbox{margin:10px 4px 6px;background:repeating-linear-gradient(45deg,#15151f,#15151f 10px,#191926 10px,#191926 20px);border:1px dashed var(--line);border-radius:12px;color:var(--muted);text-align:center;padding:14px;font-size:12px;font-weight:700;letter-spacing:.5px}
+.adbox .adsub{font-size:10px;font-weight:500;margin-top:3px;opacity:.8}
+.proTag{display:inline-block;font-size:9px;font-weight:800;color:#0a0a12;background:linear-gradient(135deg,#fbbf24,#f59e0b);padding:1px 6px;border-radius:6px;vertical-align:middle;letter-spacing:.3px}
+.setRowBtn{cursor:pointer}
+.chev2{color:var(--muted);font-size:20px;font-weight:800;line-height:1}
+.eqPro{background:linear-gradient(135deg,#7c3aed,#db2777);color:#fff;border-radius:14px;padding:14px;font-size:13px;line-height:1.5;font-weight:600;margin-bottom:16px}
+.eqPresets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.eqp{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:20px;padding:8px 14px;font-size:13px;font-weight:600;opacity:.6}
+.eqp.on{background:linear-gradient(135deg,#3b82f6,#22d3ee);color:#fff;border-color:transparent;opacity:1}
+.eqBand{display:flex;align-items:center;gap:12px;margin-bottom:14px;opacity:.55}
+.eqBand .hz{width:48px;font-size:12px;color:var(--muted);font-weight:700;flex:0 0 auto}
+.eqBand input{flex:1}
 .almInput{background:#1c1c28;color:#fff;border:1px solid #2a2a3a;border-radius:10px;padding:8px 10px;font-size:14px;outline:none}select.almInput{min-width:140px}body.light .almInput{background:#fff;color:#111;border-color:#ddd}#almBody .setRow{opacity:1}
 </style>
 </head>
@@ -183,6 +195,7 @@
   <div class="tabs"><div class="tab active" data-tab="featured">Подборка</div><div class="tab" data-tab="popular">Популярное</div><div class="tab" data-tab="foreign">Зарубежные</div><div class="tab" data-tab="history">История</div><div class="tab" data-tab="favs">Избранное</div></div>
   <div class="chips" id="chips"></div>
   <div id="list"></div>
+  <div id="adSlot" class="adbox" style="display:none">Реклама · 320×50<div class="adsub">место для баннера</div></div>
   <div class="hint" id="installHint">💡 Добавь на главный экран, чтобы пользоваться как приложением:<br>iPhone — «Поделиться» → «На экран Домой». Android — меню ⋮ → «Добавить на главный экран».</div>
   <footer></footer>
 </div>
@@ -227,6 +240,15 @@
       <div class="setRow"><div><div class="lab">Станция</div><div class="sub2">Что играть</div></div><select id="almStation" class="almInput"></select></div>
       <div class="setRow"><div><div class="lab">Повтор</div><div class="sub2">Каждый день или один раз</div></div><div class="seg" id="segRepeat"><button data-r="daily">Ежедневно</button><button data-r="once">Один раз</button></div></div>
     </div>
+    <div class="setSec">Воспроизведение</div>
+    <div class="setRow"><div><div class="lab">Буферизация</div><div class="sub2" id="bufSub">Запас перед стартом</div></div><div class="seg" id="segBuf"><button data-b="0">Выкл</button><button data-b="2">2с</button><button data-b="5">5с</button><button data-b="10">10с</button></div></div>
+
+    <div class="setSec">Premium <span class="proTag">скоро</span></div>
+    <div class="setRow setRowBtn" id="rowEq"><div><div class="lab">🎚 Эквалайзер <span class="proTag">PRO</span></div><div class="sub2">Настройка звука по частотам</div></div><span class="chev2">›</span></div>
+    <div class="setRow"><div><div class="lab">🎵 Названия треков и обложки <span class="proTag">PRO</span></div><div class="sub2" id="trkSub">Сейчас включено бесплатно</div></div><div class="seg" id="segTrk"><button data-k="off">Выкл</button><button data-k="on">Вкл</button></div></div>
+    <div class="setRow setRowBtn" id="rowNoAds"><div><div class="lab">🚫 Отключить рекламу <span class="proTag">PRO</span></div><div class="sub2">Доступно в Premium-версии</div></div><span class="chev2">›</span></div>
+    <div class="adbox" style="margin-top:4px">Реклама · 320×50<div class="adsub">место для баннера</div></div>
+
     <div class="setSec">Данные</div>
     <button class="setBtn" id="btnRefreshLogos">🔄  Обновить логотипы станций</button>
     <button class="setBtn" id="btnClearHist">🗑  Очистить историю треков</button>
@@ -289,7 +311,7 @@ async function pollNow(){
     if(!tr){dbg('⚠ трек не найден');return;}
     var artist=(tr.artist)||'';var song=(tr.song||tr.title)||'';
     var t=(artist+((artist&&song)?' — ':'')+song).trim();var _im=(tr.image600||tr.image200||'');if(_im&&_im.indexOf('http')===0&&_im.indexOf('Default')<0&&current===cur){nowArtUrl=_im;try{var _c=bCover.querySelector('img');if(_c){_c.src=_im;}else{bCover.innerHTML='<img src="'+_im+'"><span class="hole"></span>';}}catch(e){}}
-    if(t&&current===cur){nowTrack=t;dbg(t);widgetUpdate();pushHist(t,current.name);nowArtist=artist;nowSong=song;showFind();}else{dbg('⚠ трек пуст');}
+    if(t&&current===cur&&TRACKS_ON){nowTrack=t;dbg(t);widgetUpdate();pushHist(t,current.name);nowArtist=artist;nowSong=song;showFind();}else{dbg('⚠ трек пуст');}
   }catch(e){dbg('⚠ ошибка сети');}
 }
 async function pollIce(){
@@ -457,7 +479,7 @@ async function play(st){
   pState.innerHTML='<span class="spinner" style="width:13px;height:13px;border-width:2px;margin:0"></span> подключение…';
   pArt.innerHTML=st.cover?`<img src="${st.cover}">`:`<span style="font-weight:800;color:#07070c">${letter(st.name)}</span>`;
   if(st.c1)pArt.style.background=`linear-gradient(135deg,${st.c1},${st.c2||'#a855f7'})`;
-  paintBig(st);render();startNow();st._tried=false;audio.src=st.url||'';audio.play().catch(function(){});updateMediaSession(st);if((!st.url||st.url.length<6)&&st.q)resolveAndPlay(st);
+  paintBig(st);render();startNow();beginPlay(st);updateMediaSession(st);if((!st.url||st.url.length<6)&&st.q)resolveAndPlay(st);
 }
 function paintBig(st){
   bName.textContent=st.name;bGenre.textContent=st.genre||'';
@@ -493,9 +515,9 @@ async function doSearch(term){
   searchResults='loading';render();
   for(const base of RB_SERVERS){
     try{
-      const r=await fetch(`${base}/json/stations/search?name=${encodeURIComponent(term)}&limit=30&hidebroken=true&order=clickcount&reverse=true`);
-      if(!r.ok)continue;
-      const data=await r.json();const seen=new Set();
+      const data=await recGet(`${base}/json/stations/search?name=${encodeURIComponent(term)}&limit=30&hidebroken=true&order=clickcount&reverse=true`);
+      if(!Array.isArray(data))continue;
+      const seen=new Set();
       searchResults=data.filter(s=>s.url_resolved&&!seen.has(s.url_resolved)&&seen.add(s.url_resolved)).map(s=>({name:(s.name||'').trim(),genre:[s.country,(s.tags||'').split(',')[0],s.bitrate?s.bitrate+'k':''].filter(Boolean).join(' · '),url:s.url_resolved,c1:'#22d3ee',c2:'#a855f7'}));
       render();return;
     }catch(e){}
@@ -605,6 +627,71 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
   },1400);
 })();
 
+
+/* ===== Буферизация / Premium / реклама ===== */
+var BUFSEC=2; try{var _b=localStorage.getItem('radio_buffer'); if(_b!==null)BUFSEC=+_b;}catch(e){}
+var TRACKS_ON=true; try{var _t=localStorage.getItem('radio_tracks'); if(_t==='0')TRACKS_ON=false;}catch(e){}
+function isPremium(){return false;} /* задел: позже вернёт статус покупки */
+function beginPlay(st){
+  st._tried=false;
+  audio.src=st.url||'';
+  var sec=BUFSEC;
+  if(!sec||sec<1){ audio.play().catch(function(){}); return; }
+  try{audio.preload='auto';audio.load();}catch(e){}
+  var done=false;
+  function go(){ if(done)return; done=true; cl(); audio.play().catch(function(){}); }
+  function ck(){ try{var bl=audio.buffered; if(bl.length&&(bl.end(bl.length-1)-(audio.currentTime||0))>=sec) go();}catch(e){} }
+  function cl(){ audio.removeEventListener('progress',ck); audio.removeEventListener('canplaythrough',go); clearTimeout(tm); }
+  audio.addEventListener('progress',ck);
+  audio.addEventListener('canplaythrough',go);
+  var tm=setTimeout(go, Math.max(2500, sec*1500));
+}
+(function(){
+  function on(id,ev,fn){var e=document.getElementById(id);if(e)e.addEventListener(ev,fn);}
+  function seg(id,attr,val){var s=document.getElementById(id);if(!s)return;s.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset[attr]===val);});}
+  // буферизация
+  function bufText(){var e=document.getElementById('bufSub');if(!e)return;e.textContent=BUFSEC>0?('Запас '+BUFSEC+' сек перед стартом'):'Без запаса (быстрый старт)';}
+  seg('segBuf','b',String(BUFSEC)); bufText();
+  var sb=document.getElementById('segBuf');
+  if(sb)sb.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){BUFSEC=+b.dataset.b;try{localStorage.setItem('radio_buffer',BUFSEC);}catch(e){}seg('segBuf','b',String(BUFSEC));bufText();});});
+  // названия треков (пока бесплатно)
+  seg('segTrk','k',TRACKS_ON?'on':'off');
+  var st2=document.getElementById('segTrk');
+  if(st2)st2.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){
+    TRACKS_ON=(b.dataset.k==='on');try{localStorage.setItem('radio_tracks',TRACKS_ON?'1':'0');}catch(e){}
+    seg('segTrk','k',TRACKS_ON?'on':'off');
+    if(TRACKS_ON){ if(typeof startNow==='function'&&current)startNow(); }
+    else { try{nowTrack='';nowArtUrl='';if(current)bGenre.textContent=current.genre||'';widgetUpdate();showFind&&showFind();}catch(e){} }
+  });});
+  // эквалайзер (превью)
+  on('rowEq','click',function(){var p=document.getElementById('eqPanel');if(p)p.classList.add('show');});
+  on('eqClose','click',function(){var p=document.getElementById('eqPanel');if(p)p.classList.remove('show');});
+  var ep=document.getElementById('eqPresets');
+  if(ep)ep.querySelectorAll('.eqp').forEach(function(b){b.addEventListener('click',function(){toast&&toast('🎚 Эквалайзер — в Premium-версии');});});
+  on('rowNoAds','click',function(){toast&&toast('🚫 Отключение рекламы — в Premium-версии');});
+  // реклама (показываем место, пока не Premium)
+  try{if(!isPremium()){var a=document.getElementById('adSlot');if(a)a.style.display='block';}}catch(e){}
+})();
+
 </script>
+<div class="settings" id="eqPanel">
+  <div class="setWrap">
+    <div class="setTop">
+      <button class="iconBtn" id="eqClose" aria-label="назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="ttl">Эквалайзер</div>
+    </div>
+    <div class="eqPro">🎚 Эквалайзер появится в Premium-версии. Сейчас это предпросмотр интерфейса.</div>
+    <div class="eqPresets" id="eqPresets">
+      <button class="eqp on">Норма</button><button class="eqp">Поп</button><button class="eqp">Рок</button><button class="eqp">Бас</button><button class="eqp">Джаз</button><button class="eqp">Голос</button>
+    </div>
+    <div class="eqBands" id="eqBands">
+      <div class="eqBand"><span class="hz">60 Гц</span><input type="range" min="-12" max="12" value="0" disabled></div>
+      <div class="eqBand"><span class="hz">230 Гц</span><input type="range" min="-12" max="12" value="3" disabled></div>
+      <div class="eqBand"><span class="hz">910 Гц</span><input type="range" min="-12" max="12" value="0" disabled></div>
+      <div class="eqBand"><span class="hz">3.6 кГц</span><input type="range" min="-12" max="12" value="2" disabled></div>
+      <div class="eqBand"><span class="hz">14 кГц</span><input type="range" min="-12" max="12" value="4" disabled></div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
