@@ -7,6 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Prepare web dir (flat repo friendly)
+        run: |
+          mkdir -p wwwbuild
+          if [ -f www/index.html ]; then cp www/index.html wwwbuild/index.html; \
+          elif [ -f index.html ]; then cp index.html wwwbuild/index.html; fi
+          mkdir -p resources
+          if [ ! -f resources/icon.png ] && [ -f icon.png ]; then cp icon.png resources/icon.png; fi
+          if [ ! -f resources/splash.png ] && [ -f splash.png ]; then cp splash.png resources/splash.png; fi
+          echo "---- wwwbuild ----"; ls -la wwwbuild; echo "---- resources ----"; ls -la resources || true
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -18,6 +27,12 @@ jobs:
         run: npm install
       - name: Add Android platform
         run: npx cap add android
+      - name: Set app version (1.0.0 / code 1)
+        run: |
+          G=android/app/build.gradle
+          sed -i 's/versionCode .*/versionCode 1/' "$G"
+          sed -i 's/versionName .*/versionName "1.0.0"/' "$G"
+          grep -E "versionCode|versionName" "$G" || true
       - name: Inject media widget (native)
         run: |
           PKG=android/app/src/main/java/com/bobik/radio
@@ -38,13 +53,31 @@ jobs:
         run: npx cap sync android
       - name: Accept Android licenses
         run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
-      - name: Build debug APK
+      - name: Build APK (release signed if keystore set, else debug)
+        env:
+          KS: ${{ secrets.KEYSTORE_BASE64 }}
+          STOREPASS: ${{ secrets.KEYSTORE_PASSWORD }}
+          ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEYPASS: ${{ secrets.KEY_PASSWORD }}
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          if [ -n "$KS" ]; then
+            echo "$KS" | base64 -d > release.keystore
+            ./gradlew assembleRelease --no-daemon \
+              -Pandroid.injected.signing.store.file=$(pwd)/release.keystore \
+              -Pandroid.injected.signing.store.password="$STOREPASS" \
+              -Pandroid.injected.signing.key.alias="$ALIAS" \
+              -Pandroid.injected.signing.key.password="$KEYPASS"
+          else
+            echo "::warning::KEYSTORE_BASE64 не задан — собираю DEBUG. Для RuStore нужен release (настройте секреты)."
+            ./gradlew assembleDebug --no-daemon
+          fi
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Radio-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            android/app/build/outputs/apk/release/app-release.apk
+            android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
