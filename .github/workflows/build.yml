@@ -64,6 +64,7 @@ jobs:
           chmod +x gradlew
           if [ -n "$KS" ]; then
             echo "$KS" | base64 -d > release.keystore
+            KEYPASS="${KEYPASS:-$STOREPASS}"
             ./gradlew assembleRelease --no-daemon \
               -Pandroid.injected.signing.store.file=$(pwd)/release.keystore \
               -Pandroid.injected.signing.store.password="$STOREPASS" \
