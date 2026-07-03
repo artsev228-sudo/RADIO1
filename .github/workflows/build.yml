@@ -30,8 +30,8 @@ jobs:
       - name: Set app version (1.0.0 / code 1)
         run: |
           G=android/app/build.gradle
-          sed -i 's/versionCode .*/versionCode 2/' "$G"
-          sed -i 's/versionName .*/versionName "1.0.1"/' "$G"
+          sed -i 's/versionCode .*/versionCode 3/' "$G"
+          sed -i 's/versionName .*/versionName "1.0.2"/' "$G"
           grep -E "versionCode|versionName" "$G" || true
       - name: Inject media widget (native)
         run: |
