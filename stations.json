@@ -1,0 +1,749 @@
+{
+ "ru": [
+  {
+   "name": "Радио Рекорд",
+   "genre": "Танцевальное",
+   "url": "https://radiorecord.hostingradio.ru/rr_main96.aacp",
+   "c1": "#f43f5e",
+   "c2": "#a855f7"
+  },
+  {
+   "name": "Record Russian Mix",
+   "genre": "Русский поп · хиты",
+   "url": "https://radiorecord.hostingradio.ru/rus96.aacp",
+   "c1": "#22d3ee",
+   "c2": "#6366f1"
+  },
+  {
+   "name": "Record Russian Gold",
+   "genre": "Русское ретро",
+   "url": "https://radiorecord.hostingradio.ru/russiangold96.aacp",
+   "c1": "#eab308",
+   "c2": "#f97316"
+  },
+  {
+   "name": "Record Deep",
+   "genre": "Deep House",
+   "url": "https://radiorecord.hostingradio.ru/deep96.aacp",
+   "c1": "#10b981",
+   "c2": "#22d3ee"
+  },
+  {
+   "name": "Record Megamix",
+   "genre": "Микс хитов",
+   "url": "https://radiorecord.hostingradio.ru/mix96.aacp",
+   "c1": "#a855f7",
+   "c2": "#f43f5e"
+  },
+  {
+   "name": "Pirate Station",
+   "genre": "Drum & Bass",
+   "url": "https://radiorecord.hostingradio.ru/ps96.aacp",
+   "c1": "#6366f1",
+   "c2": "#22d3ee"
+  },
+  {
+   "name": "Trancemission",
+   "genre": "Trance",
+   "url": "https://radiorecord.hostingradio.ru/tm96.aacp",
+   "c1": "#22d3ee",
+   "c2": "#a855f7"
+  },
+  {
+   "name": "Record Chill-Out",
+   "genre": "Chill · Lounge",
+   "url": "https://radiorecord.hostingradio.ru/chil96.aacp",
+   "c1": "#10b981",
+   "c2": "#6366f1"
+  },
+  {
+   "name": "Европа Плюс",
+   "genre": "Поп · хиты",
+   "url": "https://emgregion.hostingradio.ru:8064/moscow.europaplus.mp3",
+   "c1": "#f43f5e",
+   "c2": "#f59e0b",
+   "q": "Europa Plus"
+  },
+  {
+   "name": "Европа Плюс TOP",
+   "genre": "Поп · хиты",
+   "url": "https://europaplus.hostingradio.ru:8014/ep-top256.mp3",
+   "c1": "#f43f5e",
+   "c2": "#ec4899",
+   "q": "Europa Plus Top"
+  },
+  {
+   "name": "ТНТ Music Radio",
+   "genre": "Поп · танцевальное",
+   "url": "https://tntradio.hostingradio.ru:8027/tntradio128.mp3",
+   "c1": "#a855f7",
+   "c2": "#6366f1",
+   "q": "TNT Music"
+  },
+  {
+   "name": "161.fm",
+   "genre": "Поп · танцевальное",
+   "url": "https://stream.161.fm:8443/128",
+   "c1": "#06b6d4",
+   "c2": "#3b82f6",
+   "q": "161 FM"
+  },
+  {
+   "name": "L-Radio",
+   "genre": "Поп · хиты",
+   "url": "https://lradio.ru/radio/lradio64.aac",
+   "c1": "#f59e0b",
+   "c2": "#f97316",
+   "q": "L-Radio"
+  },
+  {
+   "name": "На хайпе",
+   "genre": "Рэп · хайп · Рекорд",
+   "url": "https://hls-01-radiorecord.hostingradio.ru/record-hype/playlist.m3u8",
+   "c1": "#ef4444",
+   "c2": "#7c3aed",
+   "q": "Record Hype"
+  },
+  {
+   "name": "Big Hits",
+   "genre": "Танцевальное · Рекорд",
+   "url": "https://radiorecord.hostingradio.ru/bighits96.aacp",
+   "c1": "#10b981",
+   "c2": "#06b6d4",
+   "q": "Record Big Hits"
+  },
+  {
+   "name": "Супердискотека 90-х",
+   "genre": "Ретро · танцы · Рекорд",
+   "url": "https://radiorecord.hostingradio.ru/sd9096.aacp",
+   "c1": "#eab308",
+   "c2": "#f43f5e",
+   "q": "Record SD90"
+  },
+  {
+   "name": "Русское Радио",
+   "genre": "Русский поп · хиты",
+   "url": "https://rusradio.hostingradio.ru/rusradio96.aacp",
+   "c1": "#f43f5e",
+   "c2": "#6366f1",
+   "q": "Русское Радио"
+  },
+  {
+   "name": "Дорожное радио",
+   "genre": "Русские хиты",
+   "url": "https://dorognoe.hostingradio.ru:8000/dorognoe",
+   "c1": "#f59e0b",
+   "c2": "#f43f5e",
+   "q": "Дорожное радио"
+  },
+  {
+   "name": "Хит FM",
+   "genre": "Хиты",
+   "url": "https://hls-01-hitfm.hostingradio.ru/hitfm/playlist.m3u8",
+   "c1": "#22d3ee",
+   "c2": "#a855f7",
+   "q": "Хит FM"
+  },
+  {
+   "name": "Energy",
+   "genre": "Танцевальное",
+   "url": "https://hls-01-gpm.hostingradio.ru/energyfm495/playlist.m3u8",
+   "c1": "#a855f7",
+   "c2": "#f43f5e",
+   "q": "Energy"
+  },
+  {
+   "name": "Love Radio",
+   "genre": "Поп · хиты",
+   "url": "https://loveradio.hostingradio.ru/love96.aacp",
+   "c1": "#fb5076",
+   "c2": "#f59e0b",
+   "q": "Love Radio"
+  },
+  {
+   "name": "Радио Дача",
+   "genre": "Русские хиты",
+   "url": "https://listen.vdfm.ru:8000/dacha",
+   "c1": "#10b981",
+   "c2": "#eab308",
+   "q": "Радио Дача"
+  },
+  {
+   "name": "Радио Шансон",
+   "genre": "Шансон",
+   "url": "https://chanson.hostingradio.ru:8041/chanson128.mp3",
+   "c1": "#f59e0b",
+   "c2": "#f97316",
+   "q": "Радио Шансон"
+  },
+  {
+   "name": "Зайцев.FM Шансон",
+   "genre": "Шансон · авторские",
+   "url": "https://abs.zaycev.fm/shanson128k",
+   "c1": "#f59e0b",
+   "c2": "#b45309",
+   "q": "Zaycev FM"
+  },
+  {
+   "name": "Наше Радио",
+   "genre": "Русский рок",
+   "url": "https://nashe2.hostingradio.ru/nashe-128.mp3",
+   "c1": "#64748b",
+   "c2": "#f43f5e",
+   "q": "Наше Радио"
+  },
+  {
+   "name": "Maximum",
+   "genre": "Рок · альтернатива",
+   "url": "https://maximum.hostingradio.ru/maximum128.mp3",
+   "c1": "#64748b",
+   "c2": "#22d3ee",
+   "q": "Maximum"
+  },
+  {
+   "name": "Рок FM",
+   "genre": "Рок-классика",
+   "url": "https://nashe1.hostingradio.ru:80/rock-128.mp3",
+   "c1": "#64748b",
+   "c2": "#f43f5e",
+   "q": "Рок FM"
+  },
+  {
+   "name": "DFM",
+   "genre": "Танцевальное",
+   "url": "https://dfm.hostingradio.ru/dfm128.mp3",
+   "c1": "#a855f7",
+   "c2": "#22d3ee",
+   "q": "DFM"
+  },
+  {
+   "name": "Ретро FM",
+   "genre": "80-е · 90-е",
+   "url": "https://emg02.hostingradio.ru/retrofmspb128.mp3",
+   "c1": "#eab308",
+   "c2": "#f97316",
+   "q": "Ретро FM"
+  },
+  {
+   "name": "Studio 21",
+   "genre": "Хип-хоп",
+   "url": "https://stream.studio21.ru/studio2196.aacp",
+   "c1": "#22d3ee",
+   "c2": "#a855f7",
+   "q": "Studio 21"
+  },
+  {
+   "name": "Comedy Radio",
+   "genre": "Юмор",
+   "url": "https://hls-01-gpm.hostingradio.ru/comedyradio495/playlist.m3u8",
+   "c1": "#eab308",
+   "c2": "#22d3ee",
+   "q": "Comedy Radio"
+  },
+  {
+   "name": "Радио Романтика",
+   "genre": "Лирика",
+   "url": "https://hls-01-gpm.hostingradio.ru/romantika495/playlist.m3u8",
+   "c1": "#fb5076",
+   "c2": "#a855f7",
+   "q": "Радио Романтика"
+  },
+  {
+   "name": "Монте-Карло",
+   "genre": "Лаунж · хиты",
+   "url": "https://montecarlo.hostingradio.ru/montecarlo96.aacp",
+   "c1": "#22d3ee",
+   "c2": "#10b981",
+   "q": "Монте-Карло"
+  },
+  {
+   "name": "Серебряный Дождь",
+   "genre": "Разговорное",
+   "url": "https://silverrain.hostingradio.ru/silver128.mp3",
+   "c1": "#6366f1",
+   "c2": "#64748b",
+   "q": "Серебряный Дождь"
+  },
+  {
+   "name": "Новое Радио",
+   "genre": "Современные хиты",
+   "url": "https://stream.newradio.ru/novoe96.aacp",
+   "c1": "#fb5076",
+   "c2": "#6366f1",
+   "q": "Новое Радио"
+  },
+  {
+   "name": "Авторадио",
+   "genre": "Хиты для водителей",
+   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/100",
+   "c1": "#f59e0b",
+   "c2": "#f43f5e",
+   "q": "Авторадио"
+  },
+  {
+   "name": "Юмор FM",
+   "genre": "Юмор · музыка",
+   "url": "https://hls-01-gpm.hostingradio.ru/humorfm846/playlist.m3u8",
+   "c1": "#eab308",
+   "c2": "#10b981",
+   "q": "Юмор FM"
+  },
+  {
+   "name": "Вести FM",
+   "genre": "Новости",
+   "url": "https://icecast-vgtrk.cdnvideo.ru/vestifm_mp3_192kbps",
+   "c1": "#64748b",
+   "c2": "#6366f1",
+   "q": "Вести FM"
+  },
+  {
+   "name": "Радио Маяк",
+   "genre": "Разговорное · музыка",
+   "url": "https://icecast-vgtrk.cdnvideo.ru/mayakfm_mp3_192kbps",
+   "c1": "#6366f1",
+   "c2": "#22d3ee",
+   "q": "Маяк"
+  },
+  {
+   "name": "Business FM",
+   "genre": "Бизнес · новости",
+   "url": "https://bfm.hostingradio.ru/bfm128.mp3",
+   "c1": "#64748b",
+   "c2": "#f59e0b",
+   "q": "Business FM"
+  },
+  {
+   "name": "Like FM",
+   "genre": "Хиты не старше 2 лет",
+   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/219",
+   "c1": "#fb5076",
+   "c2": "#a855f7",
+   "q": "Like FM"
+  },
+  {
+   "name": "Relax FM",
+   "genre": "Релакс · лаунж",
+   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/200",
+   "c1": "#10b981",
+   "c2": "#22d3ee",
+   "q": "Relax FM"
+  },
+  {
+   "name": "Megapolis FM",
+   "genre": "Электроника",
+   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/180",
+   "c1": "#a855f7",
+   "c2": "#22d3ee",
+   "q": "Megapolis FM"
+  },
+  {
+   "name": "Радио Jazz",
+   "genre": "Джаз",
+   "url": "https://nashe1.hostingradio.ru/jazz-128.mp3",
+   "c1": "#eab308",
+   "c2": "#f97316",
+   "q": "Радио Jazz"
+  },
+  {
+   "name": "Радио 7",
+   "genre": "На семи холмах",
+   "url": "https://radio7.hostingradio.ru:8040/radio7256.mp3",
+   "c1": "#22d3ee",
+   "c2": "#10b981",
+   "q": "Радио 7"
+  },
+  {
+   "name": "Эльдорадио",
+   "genre": "Хиты разных лет",
+   "url": "https://emgspb.hostingradio.ru/eldoradio128.mp3",
+   "c1": "#f59e0b",
+   "c2": "#f43f5e",
+   "q": "Эльдорадио"
+  },
+  {
+   "name": "Радио Звезда",
+   "genre": "Патриотическое",
+   "url": "https://zvezda-radio128.mediacdn.ru/radio/zvezda/zvezda_128",
+   "c1": "#64748b",
+   "c2": "#f43f5e",
+   "q": "Радио Звезда"
+  },
+  {
+   "name": "Питер FM",
+   "genre": "Питерские хиты",
+   "url": "https://icecast-piterfm.cdnvideo.ru/piterfm",
+   "c1": "#22d3ee",
+   "c2": "#6366f1",
+   "q": "Питер FM"
+  },
+  {
+   "name": "Детское радио",
+   "genre": "Детское · сказки",
+   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/199",
+   "c1": "#22c55e",
+   "c2": "#16a34a",
+   "q": "Детское радио"
+  },
+  {
+   "name": "Радио Орфей",
+   "genre": "Классика · оркестр",
+   "url": "",
+   "c1": "#a855f7",
+   "c2": "#6366f1",
+   "q": "Радио Орфей"
+  },
+  {
+   "name": "Радио ВЕРА",
+   "genre": "Православное · разговор",
+   "url": "",
+   "c1": "#0ea5e9",
+   "c2": "#3b82f6",
+   "q": "Радио ВЕРА"
+  },
+  {
+   "name": "Радио России",
+   "genre": "Разговор · новости",
+   "url": "https://icecast-vgtrk.cdnvideo.ru/rrzonam_aac_64kbps",
+   "c1": "#ef4444",
+   "c2": "#f97316",
+   "q": "Радио России"
+  },
+  {
+   "name": "Коммерсантъ FM",
+   "genre": "Новости · бизнес",
+   "url": "https://kommersant77.hostingradio.ru:8085/kommersant128.mp3",
+   "c1": "#64748b",
+   "c2": "#334155",
+   "q": "Kommersant FM"
+  },
+  {
+   "name": "Радио Зенит",
+   "genre": "Спорт · футбол",
+   "url": "",
+   "c1": "#2563eb",
+   "c2": "#1d4ed8",
+   "q": "Радио Зенит"
+  },
+  {
+   "name": "Marusya FM",
+   "genre": "Поп · танцевальное",
+   "url": "https://listen.vdfm.ru:8000/marusya",
+   "c1": "#ec4899",
+   "c2": "#f43f5e",
+   "q": "Marusya FM"
+  },
+  {
+   "name": "Радио Ваня",
+   "genre": "Русское · поп",
+   "url": "https://icecast-radiovanya.cdnvideo.ru/radiovanya",
+   "c1": "#f59e0b",
+   "c2": "#ef4444",
+   "q": "Радио Ваня"
+  },
+  {
+   "name": "Радио Карнавал",
+   "genre": "Ретро · поп",
+   "url": "",
+   "c1": "#f97316",
+   "c2": "#eab308",
+   "q": "Радио Карнавал"
+  },
+  {
+   "name": "Радио Шоколад",
+   "genre": "Поп · лаунж",
+   "url": "https://choco.hostingradio.ru:10010/fm",
+   "c1": "#b45309",
+   "c2": "#78350f",
+   "q": "Радио Шоколад"
+  },
+  {
+   "name": "Радио Ультра",
+   "genre": "Рок · альтернатива",
+   "url": "https://nashe1.hostingradio.ru/ultra-192.mp3",
+   "c1": "#7c3aed",
+   "c2": "#db2777",
+   "q": "Радио Ультра"
+  },
+  {
+   "name": "Радио Книга",
+   "genre": "Аудиокниги · разговор",
+   "url": "https://radio-soyuz.ru:1045/stream",
+   "c1": "#0d9488",
+   "c2": "#0f766e",
+   "q": "Радио Книга"
+  },
+  {
+   "name": "Радио Спутник",
+   "genre": "Новости · разговор",
+   "url": "",
+   "c1": "#1e3a8a",
+   "c2": "#1e40af",
+   "q": "Radio Sputnik"
+  },
+  {
+   "name": "Дискотека 80-х",
+   "genre": "Ретро · 80-е",
+   "url": "",
+   "c1": "#f59e0b",
+   "c2": "#ec4899",
+   "q": "Дискотека 80"
+  },
+  {
+   "name": "Газгольдер",
+   "genre": "Хип-хоп · рэп",
+   "url": "",
+   "c1": "#0f172a",
+   "c2": "#374151",
+   "q": "Gazgolder"
+  },
+  {
+   "name": "Кекс FM",
+   "genre": "Поп · юмор",
+   "url": "https://emg02.hostingradio.ru/keksfm64.aac",
+   "c1": "#f97316",
+   "c2": "#f43f5e",
+   "q": "Keks FM"
+  },
+  {
+   "name": "Хорошее Радио",
+   "genre": "Поп · русское",
+   "url": "",
+   "c1": "#10b981",
+   "c2": "#06b6d4",
+   "q": "Хорошее радио"
+  },
+  {
+   "name": "Милицейская волна",
+   "genre": "Шансон · разговор",
+   "url": "https://radiomv.hostingradio.ru:80/radiomv128.mp3",
+   "c1": "#1e40af",
+   "c2": "#1e3a8a",
+   "q": "Милицейская волна"
+  },
+  {
+   "name": "Русский Хит",
+   "genre": "Русское · хиты",
+   "url": "https://radiorecord.hostingradio.ru/russianhits96.aacp",
+   "c1": "#ef4444",
+   "c2": "#f59e0b",
+   "q": "Русский Хит"
+  },
+  {
+   "name": "Радио Алла",
+   "genre": "Поп · ретро",
+   "url": "",
+   "c1": "#db2777",
+   "c2": "#a855f7",
+   "q": "Радио Алла"
+  },
+  {
+   "name": "Весна FM",
+   "genre": "Ретро · поп",
+   "url": "",
+   "c1": "#22c55e",
+   "c2": "#84cc16",
+   "q": "Весна FM"
+  },
+  {
+   "name": "Восток FM",
+   "genre": "Поп · восточное",
+   "url": "",
+   "c1": "#0ea5e9",
+   "c2": "#6366f1",
+   "q": "Восток FM"
+  },
+  {
+   "name": "Радио Юность",
+   "genre": "Поп · молодёжное",
+   "url": "",
+   "c1": "#8b5cf6",
+   "c2": "#ec4899",
+   "q": "Радио Юность"
+  }
+ ],
+ "fe": [
+  {
+   "name": "Groove Salad",
+   "genre": "Chill · Downtempo",
+   "url": "https://ice1.somafm.com/groovesalad-128-mp3",
+   "c1": "#22d3ee",
+   "c2": "#6366f1"
+  },
+  {
+   "name": "Drone Zone",
+   "genre": "Ambient",
+   "url": "https://ice1.somafm.com/dronezone-128-mp3",
+   "c1": "#a855f7",
+   "c2": "#6366f1"
+  },
+  {
+   "name": "Lush",
+   "genre": "Vocal Electronica",
+   "url": "https://ice1.somafm.com/lush-128-mp3",
+   "c1": "#f43f5e",
+   "c2": "#a855f7"
+  },
+  {
+   "name": "Indie Pop Rocks",
+   "genre": "Indie · Pop",
+   "url": "https://ice1.somafm.com/indiepop-128-mp3",
+   "c1": "#22d3ee",
+   "c2": "#10b981"
+  },
+  {
+   "name": "Underground 80s",
+   "genre": "Synth · 80s",
+   "url": "https://ice1.somafm.com/u80s-128-mp3",
+   "c1": "#f59e0b",
+   "c2": "#f43f5e"
+  },
+  {
+   "name": "Secret Agent",
+   "genre": "Spy Jazz · Lounge",
+   "url": "https://ice1.somafm.com/secretagent-128-mp3",
+   "c1": "#eab308",
+   "c2": "#f97316"
+  },
+  {
+   "name": "Space Station",
+   "genre": "Space Ambient",
+   "url": "https://ice1.somafm.com/spacestation-128-mp3",
+   "c1": "#6366f1",
+   "c2": "#22d3ee"
+  },
+  {
+   "name": "Boot Liquor",
+   "genre": "Americana · Country",
+   "url": "https://ice1.somafm.com/bootliquor-128-mp3",
+   "c1": "#f97316",
+   "c2": "#eab308"
+  },
+  {
+   "name": "DEF CON Radio",
+   "genre": "Hacker · Electronic",
+   "url": "https://ice1.somafm.com/defcon-128-mp3",
+   "c1": "#10b981",
+   "c2": "#22d3ee"
+  },
+  {
+   "name": "Left Coast 70s",
+   "genre": "70s Rock",
+   "url": "https://ice1.somafm.com/seventies-128-mp3",
+   "c1": "#f43f5e",
+   "c2": "#f59e0b"
+  },
+  {
+   "name": "Beat Blender",
+   "genre": "Deep House",
+   "url": "https://ice1.somafm.com/beatblender-128-mp3",
+   "c1": "#a855f7",
+   "c2": "#22d3ee"
+  },
+  {
+   "name": "Fluid",
+   "genre": "Drum & Bass",
+   "url": "https://ice1.somafm.com/fluid-128-mp3",
+   "c1": "#22d3ee",
+   "c2": "#f43f5e"
+  },
+  {
+   "name": "Metal Detector",
+   "genre": "Metal",
+   "url": "https://ice1.somafm.com/metal-128-mp3",
+   "c1": "#64748b",
+   "c2": "#f43f5e"
+  },
+  {
+   "name": "Folk Forward",
+   "genre": "Folk",
+   "url": "https://ice1.somafm.com/folkfwd-128-mp3",
+   "c1": "#10b981",
+   "c2": "#eab308"
+  },
+  {
+   "name": "PopTron",
+   "genre": "Electro Pop",
+   "url": "https://ice1.somafm.com/poptron-128-mp3",
+   "c1": "#f43f5e",
+   "c2": "#6366f1"
+  },
+  {
+   "name": "Bossa Nova",
+   "genre": "Bossa · Jazz",
+   "url": "https://ice1.somafm.com/bossa-128-mp3",
+   "c1": "#10b981",
+   "c2": "#22d3ee"
+  },
+  {
+   "name": "BBC Radio 1",
+   "genre": "Поп · UK хиты",
+   "url": "",
+   "c1": "#ef4444",
+   "c2": "#f43f5e",
+   "q": "BBC Radio 1",
+   "cc": "GB"
+  },
+  {
+   "name": "Capital FM",
+   "genre": "Поп · UK",
+   "url": "",
+   "c1": "#e11d48",
+   "c2": "#f59e0b",
+   "q": "Capital FM London",
+   "cc": "GB"
+  },
+  {
+   "name": "NRJ",
+   "genre": "Поп · хиты",
+   "url": "",
+   "c1": "#dc2626",
+   "c2": "#1f2937",
+   "q": "NRJ France",
+   "cc": "FR"
+  },
+  {
+   "name": "Radio Italia",
+   "genre": "Поп · Италия",
+   "url": "",
+   "c1": "#16a34a",
+   "c2": "#ef4444",
+   "q": "Radio Italia",
+   "cc": "IT"
+  },
+  {
+   "name": "Classic FM",
+   "genre": "Классика · UK",
+   "url": "",
+   "c1": "#1d4ed8",
+   "c2": "#7c3aed",
+   "q": "Classic FM UK",
+   "cc": "GB"
+  },
+  {
+   "name": "Jazz24",
+   "genre": "Джаз · США",
+   "url": "",
+   "c1": "#0d9488",
+   "c2": "#0891b2",
+   "q": "Jazz24",
+   "cc": "US"
+  },
+  {
+   "name": "Radio Paradise",
+   "genre": "Эклектика · чилл",
+   "url": "https://stream.radioparadise.com/aac-320",
+   "c1": "#7c3aed",
+   "c2": "#2563eb",
+   "q": "Radio Paradise"
+  },
+  {
+   "name": "KEXP",
+   "genre": "Инди-рок · Сиэтл",
+   "url": "",
+   "c1": "#f59e0b",
+   "c2": "#ef4444",
+   "q": "KEXP Seattle",
+   "cc": "US"
+  }
+ ]
+}
