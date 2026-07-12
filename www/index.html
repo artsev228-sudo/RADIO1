@@ -273,7 +273,7 @@ body.light .setIco{background:rgba(0,0,0,.05)}
     <div class="setRow setRowBtn" id="btnClearHist"><span class="setIco">🗑️</span><div class="setTx"><div class="lab">Очистить историю</div><div class="sub2">Удалить список прослушанных треков</div></div><span class="chev2">›</span></div>
     <div class="setRow setRowBtn" id="btnClearCache"><span class="setIco">♻️</span><div class="setTx"><div class="lab">Сбросить кэш</div><div class="sub2">Очистить сохранённые потоки</div></div><span class="chev2">›</span></div>
 
-    <div class="setAbout">Радио · 88 станций<br>Версия 1.2.1</div>
+    <div class="setAbout">Радио · 88 станций<br>Версия 1.2.2</div>
   </div>
 </div>
 <audio id="audio"></audio>
@@ -784,13 +784,16 @@ function buildEqUI(){
   pres.querySelectorAll('.eqp').forEach(function(b){b.addEventListener('click',function(){var P=nap();if(!P)return;EQON=true;segSet('segEq','e','on');try{localStorage.setItem('radio_eq_on','1');}catch(e){}P.eqEnable({on:true});P.eqPreset({idx:+b.dataset.i});});});
   bandsEl.innerHTML=bands.map(function(bd,i){var hz=bd.f/1000;var lbl=hz>=1000?((Math.round(hz/100)/10)+' кГц'):(Math.round(hz)+' Гц');return '<div class="eqBand"><span class="hz">'+lbl+'</span><input type="range" min="'+mn+'" max="'+mx+'" value="'+bd.l+'" data-i="'+i+'"></div>';}).join('');
   var inputs=bandsEl.querySelectorAll('input');
-  function push(){var lv=[];inputs.forEach(function(inp){lv.push(inp.value);});var P=nap();if(P){EQON=true;segSet('segEq','e','on');try{localStorage.setItem('radio_eq_on','1');}catch(e){}P.eqEnable({on:true});P.eqBands({levels:lv.join(',')});}EQBANDS=lv;try{localStorage.setItem('radio_eq_bands',JSON.stringify(lv));}catch(e){}}
-  inputs.forEach(function(inp){inp.addEventListener('input',push);});
+  var _eqT=null;
+  function sendBands(){var P=nap();if(!P)return;var lv=[];inputs.forEach(function(inp){lv.push(inp.value);});EQBANDS=lv;P.eqBands({levels:lv.join(',')});}
+  function push(){if(!EQON){EQON=true;segSet('segEq','e','on');var sub=document.getElementById('eqSub');if(sub)sub.textContent='Включён';try{localStorage.setItem('radio_eq_on','1');}catch(e){}var _P=nap();if(_P)_P.eqEnable({on:true});}if(!_eqT){_eqT=setTimeout(function(){_eqT=null;sendBands();},90);}}
+  function commit(){if(_eqT){clearTimeout(_eqT);_eqT=null;}sendBands();try{localStorage.setItem('radio_eq_bands',JSON.stringify(EQBANDS));}catch(e){}}
+  inputs.forEach(function(inp){inp.addEventListener('input',push);inp.addEventListener('change',commit);});
   segSet('segEq','e',EQON?'on':'off');var sub=document.getElementById('eqSub');if(sub)sub.textContent=EQON?'Включён':'Выключен';
 }
 (function(){
   var rowEq=document.getElementById('rowEq');
-  if(rowEq)rowEq.addEventListener('click',function(){var p=document.getElementById('eqPanel');if(p){p.classList.add('show');var _P=nap();if(_P){try{_P.eqEnable({on:EQON});}catch(e){}}buildEqUI();}});
+  if(rowEq)rowEq.addEventListener('click',function(){var p=document.getElementById('eqPanel');if(p){p.classList.add('show');buildEqUI();}});
   var eqc=document.getElementById('eqClose');if(eqc)eqc.addEventListener('click',function(){var p=document.getElementById('eqPanel');if(p)p.classList.remove('show');});
   var se=document.getElementById('segEq');if(se)se.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){EQON=(b.dataset.e==='on');segSet('segEq','e',EQON?'on':'off');try{localStorage.setItem('radio_eq_on',EQON?'1':'0');}catch(e){}var P=nap();if(P)P.eqEnable({on:EQON});var sub=document.getElementById('eqSub');if(sub)sub.textContent=EQON?'Включён':'Выключен';});});
 })();
