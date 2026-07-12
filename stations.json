@@ -155,7 +155,7 @@
   {
    "name": "Love Radio",
    "genre": "Поп · хиты",
-   "url": "https://loveradio.hostingradio.ru/love96.aacp",
+   "url": "https://listen.vdfm.ru:8000/love",
    "c1": "#fb5076",
    "c2": "#f59e0b",
    "q": "Love Radio"
@@ -275,7 +275,7 @@
   {
    "name": "Авторадио",
    "genre": "Хиты для водителей",
-   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/100",
+   "url": "https://hls-01-gpm.hostingradio.ru/avtoradio495/playlist.m3u8",
    "c1": "#f59e0b",
    "c2": "#f43f5e",
    "q": "Авторадио"
@@ -307,7 +307,7 @@
   {
    "name": "Business FM",
    "genre": "Бизнес · новости",
-   "url": "https://bfm.hostingradio.ru/bfm128.mp3",
+   "url": "https://bfm.hostingradio.ru:8004/fm",
    "c1": "#64748b",
    "c2": "#f59e0b",
    "q": "Business FM"
@@ -315,7 +315,7 @@
   {
    "name": "Like FM",
    "genre": "Хиты не старше 2 лет",
-   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/219",
+   "url": "https://hls-01-gpm.hostingradio.ru/likefm495/playlist.m3u8",
    "c1": "#fb5076",
    "c2": "#a855f7",
    "q": "Like FM"
@@ -323,18 +323,10 @@
   {
    "name": "Relax FM",
    "genre": "Релакс · лаунж",
-   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/200",
+   "url": "https://hls-01-gpm.hostingradio.ru/relaxfm843/playlist.m3u8",
    "c1": "#10b981",
    "c2": "#22d3ee",
    "q": "Relax FM"
-  },
-  {
-   "name": "Megapolis FM",
-   "genre": "Электроника",
-   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/180",
-   "c1": "#a855f7",
-   "c2": "#22d3ee",
-   "q": "Megapolis FM"
   },
   {
    "name": "Радио Jazz",
@@ -379,7 +371,7 @@
   {
    "name": "Детское радио",
    "genre": "Детское · сказки",
-   "url": "https://pub0302.101.ru:8443/stream/air/aac/64/199",
+   "url": "https://hls-01-gpm.hostingradio.ru/detifm495/playlist.m3u8",
    "c1": "#22c55e",
    "c2": "#16a34a",
    "q": "Детское радио"
@@ -395,7 +387,7 @@
   {
    "name": "Радио ВЕРА",
    "genre": "Православное · разговор",
-   "url": "",
+   "url": "https://radiovera.hostingradio.ru:8007/radiovera_128",
    "c1": "#0ea5e9",
    "c2": "#3b82f6",
    "q": "Радио ВЕРА"
@@ -443,7 +435,7 @@
   {
    "name": "Радио Карнавал",
    "genre": "Ретро · поп",
-   "url": "",
+   "url": "https://listen.vdfm.ru:8000/karnaval",
    "c1": "#f97316",
    "c2": "#eab308",
    "q": "Радио Карнавал"
@@ -489,14 +481,6 @@
    "q": "Дискотека 80"
   },
   {
-   "name": "Газгольдер",
-   "genre": "Хип-хоп · рэп",
-   "url": "",
-   "c1": "#0f172a",
-   "c2": "#374151",
-   "q": "Gazgolder"
-  },
-  {
    "name": "Кекс FM",
    "genre": "Поп · юмор",
    "url": "https://emg02.hostingradio.ru/keksfm64.aac",
@@ -529,25 +513,9 @@
    "q": "Русский Хит"
   },
   {
-   "name": "Радио Алла",
-   "genre": "Поп · ретро",
-   "url": "",
-   "c1": "#db2777",
-   "c2": "#a855f7",
-   "q": "Радио Алла"
-  },
-  {
-   "name": "Весна FM",
-   "genre": "Ретро · поп",
-   "url": "",
-   "c1": "#22c55e",
-   "c2": "#84cc16",
-   "q": "Весна FM"
-  },
-  {
    "name": "Восток FM",
    "genre": "Поп · восточное",
-   "url": "",
+   "url": "https://listen.vdfm.ru:8000/vostok",
    "c1": "#0ea5e9",
    "c2": "#6366f1",
    "q": "Восток FM"
