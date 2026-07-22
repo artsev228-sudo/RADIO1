@@ -29,9 +29,12 @@ jobs:
         run: npx cap add android
       - name: Set app version (1.0.0 / code 1)
         run: |
+          for CF in capacitor.config.json capacitor.config.ts; do
+            [ -f "$CF" ] && sed -i 's/"allowMixedContent"[[:space:]]*:[[:space:]]*true/"allowMixedContent": false/; s/allowMixedContent:[[:space:]]*true/allowMixedContent: false/' "$CF" || true
+          done
           G=android/app/build.gradle
-          sed -i 's/versionCode .*/versionCode 8/' "$G"
-          sed -i 's/versionName .*/versionName "1.2.2"/' "$G"
+          sed -i 's/versionCode .*/versionCode 9/' "$G"
+          sed -i 's/versionName .*/versionName "1.2.3"/' "$G"
           grep -E "versionCode|versionName" "$G" || true
       - name: Inject media widget (native)
         run: |
