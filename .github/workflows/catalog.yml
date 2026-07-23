@@ -1,0 +1,48 @@
+name: Update Catalog
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 1'
+permissions:
+  contents: write
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build catalog from radio-browser
+        run: |
+          node -e '
+          const https=require("https");
+          function get(url){return new Promise((res,rej)=>{https.get(url,{headers:{"User-Agent":"RadioOnline-catalog/1.0"}},r=>{if(r.statusCode>=300&&r.headers.location)return get(r.headers.location).then(res,rej);let d="";r.on("data",c=>d+=c);r.on("end",()=>{try{res(JSON.parse(d))}catch(e){rej(e)}});}).on("error",rej);});}
+          (async()=>{
+            const bases=["https://de1.api.radio-browser.info","https://de2.api.radio-browser.info","https://all.api.radio-browser.info"];
+            let world=null,ru=null,lastErr=null;
+            for(const b of bases){
+              try{
+                world=await get(b+"/json/stations/search?order=clickcount&reverse=true&hidebroken=true&limit=5000");
+                ru=await get(b+"/json/stations/search?countrycode=RU&order=clickcount&reverse=true&hidebroken=true&limit=1500");
+                break;
+              }catch(e){lastErr=e;}
+            }
+            if(!world||!ru){console.error("all servers failed",lastErr);process.exit(1);}
+            const seen={},out=[];
+            for(const x of ru.concat(world)){
+              if(!x||!x.url_resolved||!x.name)continue;
+              const k=x.name.toLowerCase().trim();
+              if(seen[k])continue;seen[k]=1;
+              const fav=(x.favicon&&/^https:\/\/[^\s"<>]{10,300}$/.test(x.favicon))?x.favicon:"";
+              out.push([x.name.trim().slice(0,60),x.url_resolved.slice(0,300),x.countrycode||"",(x.tags||"").split(",").slice(0,3).join(",").slice(0,60),x.bitrate||0,fav]);
+              if(out.length>=6000)break;
+            }
+            if(out.length<500){console.error("too few stations:",out.length);process.exit(1);}
+            require("fs").writeFileSync("catalog.json",JSON.stringify({v:1,t:Date.now(),s:out}));
+            console.log("catalog:",out.length,"stations,",require("fs").statSync("catalog.json").size,"bytes");
+          })().catch(e=>{console.error(e);process.exit(1);});
+          '
+      - name: Commit catalog.json
+        run: |
+          git config user.name "catalog-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add catalog.json
+          git diff --cached --quiet && echo "no changes" || { git commit -m "update catalog [skip ci]"; git push; }
