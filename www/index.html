@@ -275,7 +275,7 @@ body.light .setIco{background:rgba(0,0,0,.05)}
 
     <div class="setRow setRowBtn" id="rowRate"><span class="setIco">⭐</span><div class="setTx"><div class="lab">Оценить приложение</div><div class="sub2">Отзыв в RuStore очень помогает проекту</div></div><span class="chev2">›</span></div>
 
-    <div class="setAbout">Радио · 88 станций<br>Версия 1.2.5</div>
+    <div class="setAbout">Радио · 88 станций<br>Версия 1.2.7</div>
   </div>
 </div>
 <audio id="audio"></audio>
@@ -299,7 +299,18 @@ function applyStations(ru,fe){try{ru=ru||[];fe=fe||[];[ru,fe].forEach(function(A
 var REMOTE_STATIONS_URL='https://raw.githubusercontent.com/artsev228-sudo/RADIO1/main/stations.json';
 async function loadRemoteStations(){try{var d=await recGet(REMOTE_STATIONS_URL+'?t='+Math.floor(Date.now()/86400000));if(d&&d.ru&&d.ru.length){var fresh=JSON.stringify({ru:d.ru,fe:d.fe||[]});var cur=localStorage.getItem('radio_remote_raw')||'';localStorage.setItem('radio_remote',JSON.stringify({ru:d.ru,fe:d.fe||[],t:Date.now()}));localStorage.setItem('radio_remote_raw',fresh);if(fresh!==cur){applyStations(d.ru,d.fe||[]);try{if(typeof render==='function')render();}catch(e){}}}}catch(e){}}
 setTimeout(function(){try{loadRemoteStations();}catch(e){}},1500);
-const RB_SERVERS=['https://all.api.radio-browser.info','https://de1.api.radio-browser.info','https://de2.api.radio-browser.info','https://fi1.api.radio-browser.info'];
+var CATALOG_URL='https://raw.githubusercontent.com/artsev228-sudo/RADIO1/main/catalog.json';
+var CAT=[];
+;(function(){try{var c=JSON.parse(localStorage.getItem('radio_catalog')||'null');if(c&&c.s&&c.s.length)CAT=c.s;}catch(e){}})();
+async function loadCatalog(){
+  try{
+    try{var c=JSON.parse(localStorage.getItem('radio_catalog')||'null');if(c&&c.t&&(Date.now()-c.t)<3*86400000&&c.s&&c.s.length){CAT=c.s;return;}}catch(e){}
+    var d=await recGet(CATALOG_URL);
+    if(d&&d.s&&d.s.length){CAT=d.s;try{localStorage.setItem('radio_catalog',JSON.stringify({t:Date.now(),s:d.s}));}catch(e){}}
+  }catch(e){try{logErr('catalog: '+(e&&e.message||e));}catch(_){}}
+}
+setTimeout(function(){try{loadCatalog();}catch(e){}},4000);
+const RB_SERVERS=['https://de1.api.radio-browser.info','https://de2.api.radio-browser.info','https://all.api.radio-browser.info'];
 const POP_NAMES=['Радио Рекорд','Русское Радио','Европа Плюс','Европа Плюс TOP','ТНТ Music Radio','161.fm','L-Radio','На хайпе','Хит FM','Energy','DFM','Love Radio','Record Russian Mix','Дорожное радио','Радио Дача','Наше Радио','Радио Шансон','Ретро FM','Maximum','Record Deep','Studio 21'];
 const POPULAR=POP_NAMES.map(n=>RUSSIAN.concat(FEATURED).find(s=>s.name===n)).filter(Boolean);
 const $=id=>document.getElementById(id);
@@ -524,6 +535,13 @@ async function resolveStream(st){
       }catch(e){}
     }
   }
+  try{
+    if(CAT.length){var q4=(st.q||st.name||'').toLowerCase();
+      for(var i4=0;i4<CAT.length;i4++){var e4=CAT[i4];
+        if((e4[0]||'').toLowerCase().indexOf(q4)>=0&&e4[1]){STREAMS[st.name]={u:e4[1],t:Date.now()};saveStreams();return e4[1];}
+      }
+    }
+  }catch(e){}
   return st.url;
 }
 function prefetchStreams(){var L=RUSSIAN.filter(function(s){return s.q&&!STREAMS[s.name];});var i=0;(function nx(){if(i>=L.length)return;resolveStream(L[i++]).then(function(){setTimeout(nx,450);},function(){setTimeout(nx,450);});})();}
@@ -582,6 +600,18 @@ async function doSearch(term){
   searchErr=false;
   searchResults=local.slice();render();           // мгновенно: встроенные станции
   var names={};local.forEach(function(s){names[(s.name||'').toLowerCase()]=1;});
+  var catPart=[];
+  if(CAT.length){
+    for(var ci=0;ci<CAT.length&&catPart.length<40;ci++){
+      var ce=CAT[ci];var cn=(ce[0]||'');
+      if(cn.toLowerCase().indexOf(ql)>=0||((ce[3]||'').toLowerCase().indexOf(ql)>=0)){
+        var ck=cn.toLowerCase();if(names[ck])continue;names[ck]=1;
+        var cp=SPAL[ghash(cn)%SPAL.length];var cf=safeUrl(ce[5]||'');if(cf&&!LOGOS[cn])LOGOS[cn]=cf;
+        catPart.push({name:cn,genre:[ce[2],(ce[3]||'').split(',')[0],ce[4]?ce[4]+'k':''].filter(Boolean).join(' · '),url:ce[1],c1:cp[0],c2:cp[1]});
+      }
+    }
+    if(catPart.length){searchResults=local.concat(catPart);render();}
+  }
   for(const base of RB_SERVERS){
     try{
       const _q1=recGet(`${base}/json/stations/search?name=${encodeURIComponent(term)}&limit=50&hidebroken=true&order=clickcount&reverse=true`).catch(function(){return null;});
@@ -591,9 +621,10 @@ async function doSearch(term){
       if(!data.length)continue;
       var seen={};
       var remote=data.filter(function(x){return x&&x.url_resolved;}).map(function(x){var nm=(x.name||'').trim();var p=SPAL[ghash(nm)%SPAL.length];var fav=(x.favicon&&x.favicon.indexOf('http')===0&&x.favicon.length>12)?x.favicon:'';fav=safeUrl(fav);if(fav&&!LOGOS[nm])LOGOS[nm]=fav;return {name:nm,genre:[x.country,(x.tags||'').split(',')[0],x.bitrate?x.bitrate+'k':''].filter(Boolean).join(' · '),url:x.url_resolved,c1:p[0],c2:p[1]};}).filter(function(x){var k=x.name.toLowerCase();if(!x.name||names[k]||seen[x.url])return false;names[k]=1;seen[x.url]=1;return true;});
-      searchResults=local.concat(remote);render();return;
-    }catch(e){}
+      searchResults=local.concat(catPart).concat(remote);render();return;
+    }catch(e){try{logErr('search '+base.split('//')[1].split('.')[0]+': '+(e&&e.message||e));}catch(_){}}
   }
+  try{logErr('search: каталог не ответил ('+term+')');}catch(_){}
   if(!local.length){searchErr=true;searchResults=[];}
   render();
 }
