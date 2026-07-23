@@ -185,6 +185,14 @@
    "q": "Zaycev FM"
   },
   {
+   "name": "POPFM Русское",
+   "genre": "Поп · русское · Биробиджан",
+   "url": "https://stream.popfm-bir.ru:1085/stream",
+   "c1": "#ec4899",
+   "c2": "#7c3aed",
+   "cover": "https://i127.fastpic.org/big/2026/0207/da/623deac75bc3ac9920bb1a69fc1faeda.png"
+  },
+  {
    "name": "Наше Радио",
    "genre": "Русский рок",
    "url": "https://nashe2.hostingradio.ru/nashe-128.mp3",
