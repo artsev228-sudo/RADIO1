@@ -33,8 +33,8 @@ jobs:
             [ -f "$CF" ] && sed -i 's/"allowMixedContent"[[:space:]]*:[[:space:]]*true/"allowMixedContent": false/; s/allowMixedContent:[[:space:]]*true/allowMixedContent: false/' "$CF" || true
           done
           G=android/app/build.gradle
-          sed -i 's/versionCode .*/versionCode 11/' "$G"
-          sed -i 's/versionName .*/versionName "1.2.5"/' "$G"
+          sed -i 's/versionCode .*/versionCode 13/' "$G"
+          sed -i 's/versionName .*/versionName "1.2.7"/' "$G"
           grep -E "versionCode|versionName" "$G" || true
       - name: Inject media widget (native)
         run: |
